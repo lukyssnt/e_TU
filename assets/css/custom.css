@@ -1,0 +1,535 @@
+/* Custom CSS for E-ADMIN TU MA AL IHSAN */
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* --- Dark Mode Variables & Bases --- */
+.dark body {
+    background-color: #111827 !important;
+    /* bg-gray-900 */
+    color: #f3f4f6 !important;
+    /* text-gray-100 */
+}
+
+/* Forced Dark Mode Overrides for Components */
+.dark .bg-white,
+.dark .bg-gray-50 {
+    background-color: #1f2937 !important;
+    /* bg-gray-800 */
+    color: #e5e7eb !important;
+    border-color: #374151 !important;
+}
+
+.dark .text-gray-800,
+.dark .text-gray-900,
+.dark .text-gray-700,
+.dark .text-gray-600 {
+    color: #f3f4f6 !important;
+}
+
+.dark .text-gray-500 {
+    color: #9ca3af !important;
+}
+
+/* Sidebar Specific */
+.dark .sidebar-modern {
+    background: #111827 !important;
+    border-right: 1px solid #374151;
+}
+
+/* Form Elements */
+.dark input,
+.dark select,
+.dark textarea {
+    background-color: #374151 !important;
+    /* bg-gray-700 */
+    border-color: #4b5563 !important;
+    color: white !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    border-color: #60a5fa !important;
+    ring-color: rgba(96, 165, 250, 0.3);
+}
+
+/* Tables */
+.dark table thead th {
+    background-color: #374151 !important;
+    color: #e5e7eb !important;
+}
+
+.dark table tbody td {
+    border-bottom-color: #374151 !important;
+}
+
+/* Fix Table Row Hover */
+.dark table tbody tr:hover {
+    background-color: #374151 !important;
+    /* bg-gray-700 */
+}
+
+.dark table tbody tr:hover td {
+    background-color: #374151 !important;
+}
+
+/* DataTables Custom Styling */
+.dataTables_wrapper {
+    padding: 1rem 0;
+}
+
+.dataTables_filter input {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+}
+
+.dataTables_length select {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark Mode Modal Fix */
+.dark .modal-content {
+    background-color: #1f2937 !important;
+    /* bg-gray-800 */
+    color: #e5e7eb !important;
+    border: 1px solid #374151;
+}
+
+/* Dark Mode Colored Background Fixes for Cards/Alerts */
+.dark .bg-green-50,
+.dark .bg-green-100 {
+    background-color: rgba(6, 95, 70, 0.4) !important;
+    border-color: #064e3b !important;
+    color: #d1fae5 !important;
+}
+
+.dark .bg-red-50,
+.dark .bg-red-100 {
+    background-color: rgba(127, 29, 29, 0.4) !important;
+    border-color: #7f1d1d !important;
+    color: #fee2e2 !important;
+}
+
+.dark .bg-blue-50,
+.dark .bg-blue-100 {
+    background-color: rgba(30, 64, 175, 0.4) !important;
+    border-color: #1e3a8a !important;
+    color: #dbeafe !important;
+}
+
+.dark .bg-purple-50,
+.dark .bg-purple-100 {
+    background-color: rgba(88, 28, 135, 0.4) !important;
+    border-color: #581c87 !important;
+    color: #e9d5ff !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-amber-100 {
+    background-color: rgba(120, 53, 15, 0.4) !important;
+    border-color: #78350f !important;
+    color: #fef3c7 !important;
+}
+
+.dark .bg-indigo-50,
+.dark .bg-indigo-100 {
+    background-color: rgba(49, 46, 129, 0.4) !important;
+    border-color: #312e81 !important;
+    color: #e0e7ff !important;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Enhanced Table Styles */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.data-table thead th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+}
+
+table.data-table tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+table.data-table tbody tr:hover {
+    background-color: #f9fafb;
+    /* Removed transform: scale to fix modal Z-index issues */
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.badge-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.badge-success {
+    background: #10b981;
+    color: white;
+}
+
+.badge-warning {
+    background: #f59e0b;
+    color: white;
+}
+
+.badge-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.badge-info {
+    background: #06b6d4;
+    color: white;
+}
+
+.badge-secondary {
+    background: #6b7280;
+    color: white;
+}
+
+/* File Upload Area */
+.upload-area {
+    border: 2px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.upload-area.drag-over {
+    border-color: #3b82f6;
+    background-color: #dbeafe;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    min-width: 300px;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.75rem;
+    top: 0.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3b82f6;
+    border: 2px solid white;
+    box-shadow: 0 0 0 3px #dbeafe;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Card Hover Effect */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Group */
+.btn-group {
+    display: inline-flex;
+    gap: 0.5rem;
+}
+
+/* Status Pills */
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pill.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-pill.approved {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-pill.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.empty-state-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #9ca3af;
+}
+
+/* --- Global Modern Animations --- */
+
+/* Smooth Transitions for All Possible Interactive Elements */
+a,
+button,
+.btn,
+input[type="submit"],
+.bg-white,
+.shadow-md,
+.shadow-lg,
+tbody tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card Hover Effects - Lift and Shadow */
+/* Card Hover Effects - Lift and Shadow */
+.bg-white.rounded-xl.shadow-md:hover,
+.bg-white.rounded-xl.shadow-lg:hover {
+    transform: translateY(-5px) scale(1.005);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.dark .bg-white.rounded-xl.shadow-md:hover,
+.dark .bg-white.rounded-xl.shadow-lg:hover {
+    background-color: #374151 !important;
+    /* bg-gray-700 on hover */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effects - Pop and Shadow */
+button:not(:disabled):not(.no-anim):hover,
+a.btn:hover,
+a[class*="bg-"]:not(.no-anim):hover,
+button[class*="bg-"]:not(.no-anim):not(:disabled):hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+/* Table Row Hover - Subtle Lift */
+table tbody tr:hover td {
+    background-color: #f8fafc;
+    transform: scale(1.01);
+    /* Transformation on TR might break table layout, so often better on TD or just background. 
+       Let's stick to safe background change and maybe slight indent or shadow if possible. 
+       Actually, scaling TR usually looks bad. Let's do a shadow pop instead. */
+}
+
+/* Fix Light Mode Table Hover forcing white */
+table tbody tr:hover {
+    background-color: #fff;
+    /* Default light hover */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    /* Removed transform: scale(1.005) to prevent layout breakage */
+    position: relative;
+    border-radius: 4px;
+}
+
+/* Dark Mode Table Hover Fix */
+.dark table tbody tr:hover {
+    background-color: #374151 !important;
+    /* Force dark gray */
+    color: #f3f4f6 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for dark mode */
+}
+
+/* Sidebar Navigation Hover */
+aside nav a {
+    transition: all 0.3s ease;
+}
+
+aside nav a:hover {
+    transform: translateX(5px);
+    background-color: rgba(59, 130, 246, 0.1);
+    /* Light blue tint */
+}
+
+/* Input Focus Effects */
+input:focus,
+select:focus,
+textarea:focus {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}

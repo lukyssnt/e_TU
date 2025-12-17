@@ -1,0 +1,50 @@
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
+
+# Web Server / Environment files
+.htaccess_production
+php.ini
+error_log
+access_log
+*.log
+
+# Database
+database/database_consolidated.sql
+*.sql.gz
+
+# Uploads and Dynamic Content
+uploads/arsip/*
+uploads/dokumen-pegawai/*
+uploads/dokumen-siswa/*
+uploads/dokumentasi/*
+uploads/pegawai/*
+uploads/portal/*
+uploads/press-release/*
+uploads/surat-keluar/*
+uploads/surat_masuk/*
+
+# Keep directories but ignore content
+!uploads/arsip/.gitkeep
+!uploads/dokumen-pegawai/.gitkeep
+!uploads/dokumen-siswa/.gitkeep
+!uploads/dokumentasi/.gitkeep
+!uploads/pegawai/.gitkeep
+!uploads/portal/.gitkeep
+!uploads/press-release/.gitkeep
+!uploads/surat-keluar/.gitkeep
+!uploads/surat_masuk/.gitkeep
+
+# Project specific
+classes/PHPExcel/
+vendor/
+node_modules/
