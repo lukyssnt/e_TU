@@ -1,9 +1,16 @@
 <?php
-// Handle AJAX requests FIRST (before any HTML output)
-if (isset($_GET['ajax']) && $_GET['ajax'] === 'get_detail' && isset($_GET['id'])) {
-    require_once __DIR__ . '/../../config/database.php';
-    require_once __DIR__ . '/../../classes/Disposisi.php';
+$pageTitle = 'Disposisi Digital - Persuratan';
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../includes/sidebar.php';
+require_once __DIR__ . '/../../includes/functions.php';
+require_once __DIR__ . '/../../classes/Disposisi.php';
+require_once __DIR__ . '/../../classes/Pegawai.php';
+require_once __DIR__ . '/../../classes/SuratMasuk.php';
 
+checkPermission('persuratan');
+
+// Handle AJAX requests AFTER permission check
+if (isset($_GET['ajax']) && $_GET['ajax'] === 'get_detail' && isset($_GET['id'])) {
     header('Content-Type: application/json');
 
     $disposisi = new Disposisi();
@@ -16,16 +23,6 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === 'get_detail' && isset($_GET['id'])
     }
     exit;
 }
-
-$pageTitle = 'Disposisi Digital - Persuratan';
-require_once __DIR__ . '/../../includes/header.php';
-require_once __DIR__ . '/../../includes/sidebar.php';
-require_once __DIR__ . '/../../includes/functions.php';
-require_once __DIR__ . '/../../classes/Disposisi.php';
-require_once __DIR__ . '/../../classes/Pegawai.php';
-require_once __DIR__ . '/../../classes/SuratMasuk.php';
-
-checkPermission('persuratan');
 
 $disposisi = new Disposisi();
 $pegawai = new Pegawai();
@@ -476,7 +473,7 @@ $totalDisposisi = $disposisi->getTotalCount();
 
     function viewDetail(id) {
         openModal('modalDetail');
-        
+
         // Show loading
         document.getElementById('detailContent').innerHTML = `
             <div class="text-center py-12">
@@ -484,14 +481,14 @@ $totalDisposisi = $disposisi->getTotalCount();
                 <p class="text-gray-600">Memuat detail...</p>
             </div>
         `;
-        
+
         // Fetch detail
         fetch(`?ajax=get_detail&id=${id}`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
                     const d = data.data;
-                    
+
                     // Status badge
                     const statusColors = {
                         'Pending': 'bg-amber-100 text-amber-700 border-amber-300',
@@ -499,11 +496,11 @@ $totalDisposisi = $disposisi->getTotalCount();
                         'Selesai': 'bg-green-100 text-green-700 border-green-300'
                     };
                     const statusClass = statusColors[d.status] || 'bg-gray-100 text-gray-700 border-gray-300';
-                    
+
                     // Deadline warning
                     const isOverdue = d.deadline && new Date(d.deadline) < new Date() && d.status !== 'Selesai';
                     const deadlineClass = isOverdue ? 'text-red-600 font-bold' : 'text-gray-700';
-                    
+
                     document.getElementById('detailContent').innerHTML = `
                         <!-- Header Info -->
                         <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-6 text-white">
@@ -598,7 +595,7 @@ $totalDisposisi = $disposisi->getTotalCount();
                             <div class="flex items-center gap-2 ${isOverdue ? 'bg-red-50 border-red-300' : 'bg-gray-100 border-gray-300'} border-2 p-3 rounded-lg">
                                 <i class="fas fa-clock ${deadlineClass}"></i>
                                 <span class="${deadlineClass}">
-                                    <strong>Deadline:</strong> ${new Date(d.deadline).toLocaleDateString('id-ID', {day: 'numeric', month: 'long', year: 'numeric'})}
+                                    <strong>Deadline:</strong> ${new Date(d.deadline).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}
                                     ${isOverdue ? '<span class="ml-2 font-bold">(TERLAMBAT!)</span>' : ''}
                                 </span>
                             </div>
@@ -629,7 +626,7 @@ $totalDisposisi = $disposisi->getTotalCount();
                                     </div>
                                     <div class="flex-1">
                                         <p class="font-semibold text-gray-800">Disposisi Dibuat</p>
-                                        <p class="text-sm text-gray-600">${new Date(d.created_at).toLocaleString('id-ID', {day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+                                        <p class="text-sm text-gray-600">${new Date(d.created_at).toLocaleString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                                     </div>
                                 </div>
                                 ${d.updated_at && d.updated_at !== d.created_at ? `
@@ -639,7 +636,7 @@ $totalDisposisi = $disposisi->getTotalCount();
                                     </div>
                                     <div class="flex-1">
                                         <p class="font-semibold text-gray-800">Terakhir Diupdate</p>
-                                        <p class="text-sm text-gray-600">${new Date(d.updated_at).toLocaleString('id-ID', {day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+                                        <p class="text-sm text-gray-600">${new Date(d.updated_at).toLocaleString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                                     </div>
                                 </div>
                                 ` : ''}

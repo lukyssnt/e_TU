@@ -2,14 +2,15 @@ import os
 import re
 
 # Configuration
-base_dir = r'd:\APLIKASI\xampp_lite_8_4\www\e-TU\database'
+# Set base directory to the current script's directory
+base_dir = os.path.dirname(os.path.abspath(__file__))
 output_file = os.path.join(base_dir, 'database_consolidated.sql')
 
 # Files to exclude from processing (we handle schema.sql specially)
 exclude_files = ['schema.sql', 'database_consolidated.sql', 'rollback_identity_fields.sql']
 
-# Tables to remove from schema.sql
-tables_to_remove = ['users', 'roles', 'kelas', 'template_surat']
+# Tables to remove from schema.sql (because they are handled by separate create_*.sql files)
+tables_to_remove = ['users', 'roles', 'kelas', 'template_surat', 'agenda', 'aset']
 
 def read_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
@@ -52,8 +53,9 @@ def main():
         final_content.append(filtered_schema)
         final_content.append("")
     
-    # Get all other SQL files
+    # Get all other SQL files and sort them alphabetically to ensure deterministic order
     all_files = [f for f in os.listdir(base_dir) if f.endswith('.sql') and f not in exclude_files]
+    all_files.sort()
     
     # Group files
     create_files = [f for f in all_files if f.startswith('create_')]

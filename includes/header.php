@@ -5,6 +5,7 @@ if (!ob_get_level()) {
 }
 
 require_once __DIR__ . '/../config/session.php';
+require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/functions.php';
 
 // Check if user is logged in

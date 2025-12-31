@@ -238,12 +238,12 @@ $allSuratMasuk = $suratMasuk->getAll();
                                 </td>
                                 <td>
                                     <div class="flex items-center justify-center gap-2">
-                                        <button onclick="viewSurat(<?= $surat['id'] ?>)"
+                                        <button onclick='viewSurat(<?= json_encode($surat) ?>)'
                                             class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm"
                                             title="Lihat Detail">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                        <button onclick="editSurat(<?= $surat['id'] ?>)"
+                                        <button onclick='editSurat(<?= json_encode($surat) ?>)'
                                             class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm"
                                             title="Edit">
                                             <i class="fas fa-edit"></i>
@@ -355,6 +355,121 @@ $allSuratMasuk = $suratMasuk->getAll();
     </div>
 </div>
 
+<!-- Modal View -->
+<div id="modalView" class="modal-overlay">
+    <div class="modal-content max-w-2xl">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">Detail Surat Masuk</h3>
+            <button onclick="closeModal('modalView')" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <table class="w-full text-left">
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600 w-1/3">No. Surat</th>
+                    <td id="view_nomor" class="py-3 font-bold"></td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600">Tgl Terima</th>
+                    <td id="view_tanggal" class="py-3"></td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600">Sifat</th>
+                    <td id="view_sifat" class="py-3"></td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600">Pengirim</th>
+                    <td id="view_pengirim" class="py-3"></td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600">Perihal</th>
+                    <td id="view_perihal" class="py-3"></td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                    <th class="py-3 text-gray-600">Status</th>
+                    <td id="view_status" class="py-3"></td>
+                </tr>
+                <tr>
+                    <th class="py-3 text-gray-600">File</th>
+                    <td id="view_file" class="py-3"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="mt-6 flex justify-end">
+            <button onclick="closeModal('modalView')"
+                class="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold">Tutup</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit -->
+<div id="modalEdit" class="modal-overlay">
+    <div class="modal-content max-w-2xl">
+        <div class="flex items-center justify-between mb-6">
+            <h3 class="text-2xl font-bold text-gray-800">Edit Surat Masuk</h3>
+            <button onclick="closeModal('modalEdit')" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" id="formEdit">
+            <input type="hidden" name="action" value="update">
+            <input type="hidden" name="id" id="edit_id">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor Surat</label>
+                    <input type="text" name="nomor_surat" id="edit_nomor" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Tanggal Terima</label>
+                    <input type="date" name="tanggal_terima" id="edit_tanggal" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Sifat Surat</label>
+                    <select name="sifat_surat" id="edit_sifat" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500">
+                        <option value="Biasa">Biasa</option>
+                        <option value="Penting">Penting</option>
+                        <option value="Segera">Segera</option>
+                        <option value="Rahasia">Rahasia</option>
+                    </select>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Pengirim</label>
+                    <input type="text" name="pengirim" id="edit_pengirim" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Perihal</label>
+                    <textarea name="perihal" id="edit_perihal" required rows="3"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Ganti File Surat (Opsional)</label>
+                    <input type="file" name="file_surat" accept=".pdf,.doc,.docx"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500">
+                    <p class="text-xs text-gray-500 mt-1" id="edit_file_info">File saat ini: -</p>
+                </div>
+            </div>
+
+            <div class="mt-6 flex gap-3 justify-end">
+                <button type="button" onclick="closeModal('modalEdit')"
+                    class="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold">
+                    Batal
+                </button>
+                <button type="submit"
+                    class="px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white rounded-lg font-semibold">
+                    <i class="fas fa-save mr-2"></i>Update
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script src="/e-TU/assets/js/app.js"></script>
 <script>
     // Search functionality
@@ -381,14 +496,26 @@ $allSuratMasuk = $suratMasuk->getAll();
         });
     }
 
-    function viewSurat(id) {
-        // Implementation for view detail
-        alert('View detail surat ID: ' + id);
+    function viewSurat(s) {
+        document.getElementById('view_nomor').textContent = s.nomor_surat;
+        document.getElementById('view_tanggal').textContent = s.tanggal_terima;
+        document.getElementById('view_sifat').textContent = s.sifat_surat;
+        document.getElementById('view_pengirim').textContent = s.pengirim;
+        document.getElementById('view_perihal').textContent = s.perihal;
+        document.getElementById('view_status').textContent = s.status;
+        document.getElementById('view_file').innerHTML = s.file_surat ? `<a href="/e-TU/${s.file_surat}" target="_blank" class="text-blue-600">Lihat File</a>` : '-';
+        openModal('modalView');
     }
 
-    function editSurat(id) {
-        // Implementation for edit
-        alert('Edit surat ID: ' + id);
+    function editSurat(s) {
+        document.getElementById('edit_id').value = s.id;
+        document.getElementById('edit_nomor').value = s.nomor_surat;
+        document.getElementById('edit_tanggal').value = s.tanggal_terima;
+        document.getElementById('edit_sifat').value = s.sifat_surat;
+        document.getElementById('edit_pengirim').value = s.pengirim;
+        document.getElementById('edit_perihal').value = s.perihal;
+        document.getElementById('edit_file_info').textContent = s.file_surat ? 'File saat ini: ' + s.file_surat : 'File saat ini: -';
+        openModal('modalEdit');
     }
 
     function deleteSurat(id) {

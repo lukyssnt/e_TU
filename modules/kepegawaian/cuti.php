@@ -46,12 +46,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             }
         } elseif ($_POST['action'] === 'approve') {
             // TODO: Get current user ID from session
-            $userId = 1; // Placeholder
+            $userId = $_SESSION['user_id'];
             if ($cuti->updateStatus($_POST['id'], 'Disetujui', $userId)) {
                 redirect($_SERVER['PHP_SELF'], 'Pengajuan cuti disetujui!', 'success');
             }
         } elseif ($_POST['action'] === 'reject') {
-            $userId = 1; // Placeholder
+            $userId = $_SESSION['user_id'];
             if ($cuti->updateStatus($_POST['id'], 'Ditolak', $userId, $_POST['alasan_penolakan'])) {
                 redirect($_SERVER['PHP_SELF'], 'Pengajuan cuti ditolak!', 'success');
             }
@@ -82,7 +82,8 @@ $stats = $cuti->getStats();
         <div class="flex items-center justify-between flex-wrap gap-4">
             <div>
                 <h2 class="text-3xl font-bold text-gray-800 flex items-center gap-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg">
                         <i class="fas fa-calendar-minus text-white text-xl"></i>
                     </div>
                     Manajemen Cuti
@@ -175,13 +176,13 @@ $stats = $cuti->getStats();
                                 </td>
                                 <td><?= htmlspecialchars($c['jenis_cuti']) ?></td>
                                 <td class="text-sm">
-                                    <?= formatTanggal($c['tanggal_mulai'], 'short') ?> - 
+                                    <?= formatTanggal($c['tanggal_mulai'], 'short') ?> -
                                     <?= formatTanggal($c['tanggal_selesai'], 'short') ?>
                                 </td>
                                 <td><?= $c['jumlah_hari'] ?> Hari</td>
                                 <td>
                                     <?php
-                                    $statusClass = match($c['status']) {
+                                    $statusClass = match ($c['status']) {
                                         'Disetujui' => 'success',
                                         'Ditolak' => 'danger',
                                         default => 'warning'
@@ -195,22 +196,24 @@ $stats = $cuti->getStats();
                                             class="px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm">
                                             <i class="fas fa-eye"></i>
                                         </button>
-                                        
+
                                         <?php if ($c['status'] === 'Menunggu'): ?>
                                             <button onclick='editCuti(<?= json_encode($c) ?>)'
                                                 class="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm">
                                                 <i class="fas fa-edit"></i>
                                             </button>
                                             <button onclick="approveCuti(<?= $c['id'] ?>)"
-                                                class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded text-sm" title="Setujui">
+                                                class="px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded text-sm"
+                                                title="Setujui">
                                                 <i class="fas fa-check"></i>
                                             </button>
                                             <button onclick="rejectCuti(<?= $c['id'] ?>)"
-                                                class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded text-sm" title="Tolak">
+                                                class="px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded text-sm"
+                                                title="Tolak">
                                                 <i class="fas fa-times"></i>
                                             </button>
                                         <?php endif; ?>
-                                        
+
                                         <button onclick="deleteCuti(<?= $c['id'] ?>)"
                                             class="px-3 py-1.5 bg-gray-500 hover:bg-gray-600 text-white rounded text-sm">
                                             <i class="fas fa-trash"></i>
@@ -254,17 +257,20 @@ $stats = $cuti->getStats();
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="md:col-span-2">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Pilih Pegawai *</label>
-                    <select name="pegawai_id" id="pegawai_id" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <select name="pegawai_id" id="pegawai_id" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                         <option value="">-- Pilih Pegawai --</option>
                         <?php foreach ($allPegawai as $p): ?>
-                            <option value="<?= $p['id'] ?>"><?= htmlspecialchars($p['nama_lengkap']) ?> - <?= htmlspecialchars($p['nip']) ?></option>
+                            <option value="<?= $p['id'] ?>"><?= htmlspecialchars($p['nama_lengkap']) ?> -
+                                <?= htmlspecialchars($p['nip']) ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
                 <div>
                     <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Cuti *</label>
-                    <select name="jenis_cuti" id="jenis_cuti" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <select name="jenis_cuti" id="jenis_cuti" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                         <option value="">Pilih...</option>
                         <option value="Cuti Tahunan">Cuti Tahunan</option>
                         <option value="Cuti Sakit">Cuti Sakit</option>
@@ -327,7 +333,8 @@ $stats = $cuti->getStats();
             <!-- Content populated by JS -->
         </div>
         <div class="mt-6 flex justify-end">
-            <button onclick="closeModal('modalView')" class="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold">
+            <button onclick="closeModal('modalView')"
+                class="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold">
                 Tutup
             </button>
         </div>
@@ -356,7 +363,7 @@ $stats = $cuti->getStats();
             const start = new Date(tglMulai.value);
             const end = new Date(tglSelesai.value);
             const diffTime = Math.abs(end - start);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; 
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
             if (diffDays > 0) jmlHari.value = diffDays;
         }
     }
@@ -377,16 +384,16 @@ $stats = $cuti->getStats();
         document.getElementById('modalTitle').textContent = 'Edit Pengajuan Cuti';
         document.getElementById('formAction').value = 'update';
         document.getElementById('cutiId').value = data.id;
-        
+
         document.getElementById('pegawai_id').value = data.pegawai_id;
         document.getElementById('pegawai_id').disabled = true; // Cannot change employee when editing
-        
+
         document.getElementById('jenis_cuti').value = data.jenis_cuti;
         document.getElementById('tanggal_mulai').value = data.tanggal_mulai;
         document.getElementById('tanggal_selesai').value = data.tanggal_selesai;
         document.getElementById('jumlah_hari').value = data.jumlah_hari;
         document.getElementById('keterangan').value = data.keterangan;
-        
+
         openModal('modalAdd');
     }
 
@@ -396,7 +403,7 @@ $stats = $cuti->getStats();
             'Disetujui': 'bg-green-100 text-green-700',
             'Ditolak': 'bg-red-100 text-red-700'
         };
-        
+
         const content = `
             <div class="flex items-center gap-4 mb-6 p-4 bg-gray-50 rounded-lg">
                 <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
@@ -443,14 +450,14 @@ $stats = $cuti->getStats();
                 ` : ''}
             </div>
         `;
-        
+
         // Helper function for date formatting in JS (simple version)
         function formatTanggal(dateStr) {
-            if(!dateStr) return '-';
+            if (!dateStr) return '-';
             const date = new Date(dateStr);
             return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
         }
-        
+
         document.getElementById('viewContent').innerHTML = content;
         openModal('modalView');
     }

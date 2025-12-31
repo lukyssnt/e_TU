@@ -42,7 +42,8 @@ class Portal
 
         // Check image file type
         $check = getimagesize($file['tmp_name']);
-        if ($check === false) return false;
+        if ($check === false)
+            return false;
 
         // Upload
         if (move_uploaded_file($file['tmp_name'], $absolutePath)) {

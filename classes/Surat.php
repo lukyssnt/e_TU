@@ -59,14 +59,14 @@ class Surat
             ':perihal' => $data['perihal'],
             ':sifat' => $data['sifat_surat'],
             ':file' => $data['file_surat'],
-            ':user' => $_SESSION['user_id'] ?? 1
+            ':user' => $_SESSION['user_id']
         ]);
     }
 
     public function updateSuratMasuk($id, $data)
     {
         $sql = "UPDATE surat_masuk SET nomor_surat = :no, tanggal_terima = :tgl, pengirim = :pengirim, perihal = :perihal, sifat_surat = :sifat";
-        
+
         $params = [
             ':no' => $data['nomor_surat'],
             ':tgl' => $data['tanggal_terima'],
@@ -115,14 +115,14 @@ class Surat
             ':perihal' => $data['perihal'],
             ':template' => $data['template_id'] ?? null,
             ':file' => $data['file_surat'],
-            ':user' => $_SESSION['user_id'] ?? 1
+            ':user' => $_SESSION['user_id']
         ]);
     }
 
     public function updateSuratKeluar($id, $data)
     {
         $sql = "UPDATE surat_keluar SET nomor_surat = :no, tanggal_surat = :tgl, tujuan = :tujuan, perihal = :perihal, template_id = :template";
-        
+
         $params = [
             ':no' => $data['nomor_surat'],
             ':tgl' => $data['tanggal_surat'],

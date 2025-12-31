@@ -166,7 +166,7 @@ foreach ($rabItems as $item) {
     <div class="header">
         <!-- Logo placeholder if exists -->
         <?php if (!empty($settingsMap['app_logo'])): ?>
-            <img src="/e-TU/<?= $settingsMap['app_logo'] ?>" alt="Logo">
+            <img src="<?= BASE_URL ?><?= $settingsMap['app_logo'] ?>" alt="Logo">
         <?php endif; ?>
 
         <h1><?= $settingsMap['school_name'] ?? 'MA AL IHSAN' ?></h1>

@@ -21,10 +21,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'download_template') {
         ob_end_clean();
 
     $output = fopen('php://output', 'w');
-    
+
     // Add separator hint for Excel
     fwrite($output, "sep=;\n");
-    
+
     fprintf($output, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOM for Excel UTF-8
 
     // Header row
@@ -47,10 +47,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'export') {
         ob_end_clean();
 
     $output = fopen('php://output', 'w');
-    
+
     // Add separator hint for Excel
     fwrite($output, "sep=;\n");
-    
+
     fprintf($output, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOM
 
     // Header
@@ -832,6 +832,12 @@ $kelasList = $kelas->getAll();
 
     document.getElementById('searchInput')?.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase();
+        const url = new URL(window.location.href);
+        if (searchTerm) {
+            url.searchParams.set('search', searchTerm);
+        } else {
+            url.searchParams.delete('search');
+        }
         window.location.href = url.toString();
     });
 

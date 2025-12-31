@@ -1,5 +1,13 @@
 <?php
+require_once __DIR__ . '/../../config/session.php';
 require_once __DIR__ . '/../../includes/functions.php';
+
+// Check if user is logged in
+if (!Session::isLoggedIn()) {
+    die("Akses ditolak. Silakan login terlebih dahulu.");
+}
+
+require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../classes/Pembayaran.php';
 
 // Check ID

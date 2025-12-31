@@ -5,121 +5,121 @@ $navigationModules = [
         'module' => 'dashboard',
         'title' => 'Dashboard',
         'icon' => 'fa-home',
-        'url' => '/e-TU/dashboard.php',
+        'url' => BASE_URL . '/dashboard.php',
         'permission' => 'all'
     ],
     [
         'module' => 'kepegawaian',
         'title' => 'Kepegawaian',
         'icon' => 'fa-users',
-        'url' => '/e-TU/modules/kepegawaian/index.php',
+        'url' => BASE_URL . '/modules/kepegawaian/index.php',
         'permission' => 'kepegawaian',
         'submenu' => [
-            ['title' => 'Data Pegawai', 'url' => '/e-TU/modules/kepegawaian/pegawai.php'],
-            ['title' => 'Manajemen Cuti', 'url' => '/e-TU/modules/kepegawaian/cuti.php'],
+            ['title' => 'Data Pegawai', 'url' => BASE_URL . '/modules/kepegawaian/pegawai.php'],
+            ['title' => 'Manajemen Cuti', 'url' => BASE_URL . '/modules/kepegawaian/cuti.php'],
         ]
     ],
     [
         'module' => 'keuangan',
         'title' => 'Keuangan',
         'icon' => 'fa-money-bill-wave',
-        'url' => '/e-TU/modules/keuangan/index.php',
+        'url' => BASE_URL . '/modules/keuangan/index.php',
         'permission' => 'keuangan',
         'submenu' => [
-            ['title' => 'Kas Masuk/Keluar', 'url' => '/e-TU/modules/keuangan/kas.php'],
-            ['title' => 'Buku Kas', 'url' => '/e-TU/modules/keuangan/buku-kas.php'],
-            ['title' => 'Pembayaran Siswa', 'url' => '/e-TU/modules/keuangan/pembayaran.php'],
-            ['title' => 'RAB', 'url' => '/e-TU/modules/keuangan/rab.php'],
-            ['title' => 'Laporan Keuangan', 'url' => '/e-TU/modules/keuangan/laporan.php'],
+            ['title' => 'Kas Masuk/Keluar', 'url' => BASE_URL . '/modules/keuangan/kas.php'],
+            ['title' => 'Buku Kas', 'url' => BASE_URL . '/modules/keuangan/buku-kas.php'],
+            ['title' => 'Pembayaran Siswa', 'url' => BASE_URL . '/modules/keuangan/pembayaran.php'],
+            ['title' => 'RAB', 'url' => BASE_URL . '/modules/keuangan/rab.php'],
+            ['title' => 'Laporan Keuangan', 'url' => BASE_URL . '/modules/keuangan/laporan.php'],
         ]
     ],
     [
         'module' => 'sarpras',
         'title' => 'Sarana Prasarana',
         'icon' => 'fa-warehouse',
-        'url' => '/e-TU/modules/sarpras/index.php',
+        'url' => BASE_URL . '/modules/sarpras/index.php',
         'permission' => 'sarpras',
         'submenu' => [
-            ['title' => 'Inventaris Aset', 'url' => '/e-TU/modules/sarpras/aset.php'],
-            ['title' => 'Peminjaman Aset', 'url' => '/e-TU/modules/sarpras/peminjaman.php'],
-            ['title' => 'Maintenance', 'url' => '/e-TU/modules/sarpras/maintenance.php'],
+            ['title' => 'Inventaris Aset', 'url' => BASE_URL . '/modules/sarpras/aset.php'],
+            ['title' => 'Peminjaman Aset', 'url' => BASE_URL . '/modules/sarpras/peminjaman.php'],
+            ['title' => 'Maintenance', 'url' => BASE_URL . '/modules/sarpras/maintenance.php'],
         ]
     ],
     [
         'module' => 'kehumasan',
         'title' => 'Kehumasan',
         'icon' => 'fa-bullhorn',
-        'url' => '/e-TU/modules/kehumasan/index.php',
+        'url' => BASE_URL . '/modules/kehumasan/index.php',
         'permission' => 'kehumasan',
         'submenu' => [
-            ['title' => 'Agenda Kegiatan', 'url' => '/e-TU/modules/kehumasan/agenda.php'],
-            ['title' => 'Dokumentasi', 'url' => '/e-TU/modules/kehumasan/dokumentasi.php'],
-            ['title' => 'Press Release', 'url' => '/e-TU/modules/kehumasan/press-release.php'],
+            ['title' => 'Agenda Kegiatan', 'url' => BASE_URL . '/modules/kehumasan/agenda.php'],
+            ['title' => 'Dokumentasi', 'url' => BASE_URL . '/modules/kehumasan/dokumentasi.php'],
+            ['title' => 'Press Release', 'url' => BASE_URL . '/modules/kehumasan/press-release.php'],
         ]
     ],
     [
         'module' => 'persuratan',
         'title' => 'Persuratan & Kearsipan',
         'icon' => 'fa-envelope',
-        'url' => '/e-TU/modules/persuratan/index.php',
+        'url' => BASE_URL . '/modules/persuratan/index.php',
         'permission' => 'persuratan',
         'submenu' => [
-            ['title' => 'Surat Generator', 'url' => '/e-TU/modules/persuratan/generator.php', 'badge' => 'Popular'],
-            ['title' => 'Surat Masuk', 'url' => '/e-TU/modules/persuratan/surat-masuk.php'],
-            ['title' => 'Surat Keluar', 'url' => '/e-TU/modules/persuratan/surat-keluar.php'],
-            ['title' => 'Disposisi Digital', 'url' => '/e-TU/modules/persuratan/disposisi.php'],
-            ['title' => 'Arsip Digital', 'url' => '/e-TU/modules/persuratan/arsip.php'],
-            ['title' => 'Template Surat', 'url' => '/e-TU/modules/persuratan/template.php'],
+            ['title' => 'Surat Generator', 'url' => BASE_URL . '/modules/persuratan/generator.php', 'badge' => 'Popular'],
+            ['title' => 'Surat Masuk', 'url' => BASE_URL . '/modules/persuratan/surat-masuk.php'],
+            ['title' => 'Surat Keluar', 'url' => BASE_URL . '/modules/persuratan/surat-keluar.php'],
+            ['title' => 'Disposisi Digital', 'url' => BASE_URL . '/modules/persuratan/disposisi.php'],
+            ['title' => 'Arsip Digital', 'url' => BASE_URL . '/modules/persuratan/arsip.php'],
+            ['title' => 'Template Surat', 'url' => BASE_URL . '/modules/persuratan/template.php'],
         ]
     ],
     [
         'module' => 'kesiswaan',
         'title' => 'Kesiswaan',
         'icon' => 'fa-user-graduate',
-        'url' => '/e-TU/modules/kesiswaan/index.php',
+        'url' => BASE_URL . '/modules/kesiswaan/index.php',
         'permission' => 'kesiswaan',
         'submenu' => [
-            ['title' => 'Data Siswa', 'url' => '/e-TU/modules/kesiswaan/siswa.php'],
-            ['title' => 'Data Alumni', 'url' => '/e-TU/modules/kesiswaan/alumni.php'],
-            ['title' => 'Manajemen Kelas', 'url' => '/e-TU/modules/kesiswaan/kelas.php'],
-            ['title' => 'Mutasi Siswa', 'url' => '/e-TU/modules/kesiswaan/mutasi.php'],
+            ['title' => 'Data Siswa', 'url' => BASE_URL . '/modules/kesiswaan/siswa.php'],
+            ['title' => 'Data Alumni', 'url' => BASE_URL . '/modules/kesiswaan/alumni.php'],
+            ['title' => 'Manajemen Kelas', 'url' => BASE_URL . '/modules/kesiswaan/kelas.php'],
+            ['title' => 'Mutasi Siswa', 'url' => BASE_URL . '/modules/kesiswaan/mutasi.php'],
         ]
     ],
     [
         'module' => 'layanan',
         'title' => 'Layanan Khusus',
         'icon' => 'fa-hands-helping',
-        'url' => '/e-TU/modules/layanan/index.php',
+        'url' => BASE_URL . '/modules/layanan/index.php',
         'permission' => 'layanan',
         'submenu' => [
-            ['title' => 'Perpustakaan', 'url' => '/e-TU/modules/layanan/perpustakaan.php'],
-            ['title' => 'UKS', 'url' => '/e-TU/modules/layanan/uks.php'],
+            ['title' => 'Perpustakaan', 'url' => BASE_URL . '/modules/layanan/perpustakaan.php'],
+            ['title' => 'UKS', 'url' => BASE_URL . '/modules/layanan/uks.php'],
         ]
     ],
     [
         'module' => 'portal',
         'title' => 'Portal Informasi',
         'icon' => 'fa-globe',
-        'url' => '/e-TU/modules/portal/index.php',
+        'url' => BASE_URL . '/modules/portal/index.php',
         'permission' => 'admin',
         'submenu' => [
-            ['title' => 'Konten Website', 'url' => '/e-TU/modules/portal/index.php'],
-            ['title' => 'Buku Tamu', 'url' => '/e-TU/modules/portal/buku-tamu.php'],
-            ['title' => 'Layanan Alumni', 'url' => '/e-TU/modules/portal/alumni.php'],
+            ['title' => 'Konten Website', 'url' => BASE_URL . '/modules/portal/index.php'],
+            ['title' => 'Buku Tamu', 'url' => BASE_URL . '/modules/portal/buku-tamu.php'],
+            ['title' => 'Layanan Alumni', 'url' => BASE_URL . '/modules/portal/alumni.php'],
         ]
     ],
     [
         'module' => 'tik',
         'title' => 'TIK & Pengaturan',
         'icon' => 'fa-cog',
-        'url' => '/e-TU/modules/tik/index.php',
+        'url' => BASE_URL . '/modules/tik/index.php',
         'permission' => 'tik',
         'submenu' => [
-            ['title' => 'Pengaturan Akademik', 'url' => '/e-TU/modules/tik/academic-settings.php', 'badge' => 'New'],
-            ['title' => 'Manajemen User', 'url' => '/e-TU/modules/tik/users.php'],
-            ['title' => 'Role & Permission', 'url' => '/e-TU/modules/tik/roles.php'],
-            ['title' => 'Log Aktivitas', 'url' => '/e-TU/modules/tik/logs.php'],
-            ['title' => 'Pengaturan Sistem', 'url' => '/e-TU/modules/tik/settings.php'],
+            ['title' => 'Pengaturan Akademik', 'url' => BASE_URL . '/modules/tik/academic-settings.php', 'badge' => 'New'],
+            ['title' => 'Manajemen User', 'url' => BASE_URL . '/modules/tik/users.php'],
+            ['title' => 'Role & Permission', 'url' => BASE_URL . '/modules/tik/roles.php'],
+            ['title' => 'Log Aktivitas', 'url' => BASE_URL . '/modules/tik/logs.php'],
+            ['title' => 'Pengaturan Sistem', 'url' => BASE_URL . '/modules/tik/settings.php'],
         ]
     ],
 ];
@@ -199,7 +199,7 @@ $currentPage = $_SERVER['REQUEST_URI'];
                 $sidebarSettings = $settingObjSidebar->getAll();
                 foreach ($sidebarSettings as $s) {
                     if ($s['setting_key'] === 'app_logo' && !empty($s['setting_value'])) {
-                        $sidebarLogo = '/e-TU/' . $s['setting_value'];
+                        $sidebarLogo = BASE_URL . '/' . $s['setting_value'];
                     }
                     if ($s['setting_key'] === 'app_name') {
                         $sidebarSchoolName = $s['setting_value'];
@@ -256,13 +256,13 @@ $currentPage = $_SERVER['REQUEST_URI'];
             </div>
             <!-- Edit Profile & Logout -->
             <div class="flex gap-2 mt-2">
-                <a href="/e-TU/profile.php"
+                <a href="<?= BASE_URL ?>/profile.php"
                     class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 rounded-lg smooth-transition shadow-sm text-xs font-semibold"
                     title="Edit Profil">
                     <i class="fas fa-user-edit"></i>
                     <span>Edit</span>
                 </a>
-                <a href="/e-TU/logout.php"
+                <a href="<?= BASE_URL ?>/logout.php"
                     class="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg smooth-transition shadow-md text-xs font-semibold"
                     title="Keluar">
                     <i class="fas fa-sign-out-alt"></i>

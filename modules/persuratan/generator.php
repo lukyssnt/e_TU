@@ -4,7 +4,15 @@ require_once __DIR__ . '/../../config/database.php';
 require_once __DIR__ . '/../../classes/TemplateSurat.php';
 require_once __DIR__ . '/../../classes/Siswa.php';
 
-// Handle AJAX requests FIRST
+// Now load the page content
+$pageTitle = 'Surat Generator - Persuratan';
+require_once __DIR__ . '/../../includes/header.php';
+require_once __DIR__ . '/../../includes/sidebar.php';
+require_once __DIR__ . '/../../includes/functions.php';
+
+checkPermission('persuratan');
+
+// Handle AJAX requests AFTER permission check
 if (isset($_GET['ajax'])) {
     header('Content-Type: application/json');
 
@@ -55,14 +63,6 @@ if (isset($_GET['ajax'])) {
         exit;
     }
 }
-
-// Now load the page content
-$pageTitle = 'Surat Generator - Persuratan';
-require_once __DIR__ . '/../../includes/header.php';
-require_once __DIR__ . '/../../includes/sidebar.php';
-require_once __DIR__ . '/../../includes/functions.php';
-
-checkPermission('persuratan');
 
 $templateSurat = new TemplateSurat();
 $templates = $templateSurat->getAll();

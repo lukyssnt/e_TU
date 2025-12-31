@@ -80,23 +80,25 @@ $contents = $portal->getAllContent();
             <div class="grid grid-cols-1 gap-6">
                 <?php foreach ($contents as $key => $data): ?>
                     <div>
-                        <?php 
-                            $label = ucwords(str_replace('_', ' ', $key));
-                            if ($key === 'finance_feature_status') {
-                                $label = 'Status Layanan Cek Tagihan (Publik)';
-                            } elseif ($key === 'hero_title') {
-                                $label = 'Judul Utama (Hero)';
-                            } elseif ($key === 'about_text') {
-                                $label = 'Deskripsi Tentang Sekolah';
-                            }
+                        <?php
+                        $label = ucwords(str_replace('_', ' ', $key));
+                        if ($key === 'finance_feature_status') {
+                            $label = 'Status Layanan Cek Tagihan (Publik)';
+                        } elseif ($key === 'hero_title') {
+                            $label = 'Judul Utama (Hero)';
+                        } elseif ($key === 'about_text') {
+                            $label = 'Deskripsi Tentang Sekolah';
+                        }
                         ?>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
                             <?= $label ?>
                             <?php if ($key === 'finance_feature_status'): ?>
                                 <span class="block text-xs font-normal text-gray-500 mt-1">
                                     <i class="fas fa-info-circle text-blue-500 mr-1"></i>
-                                    Atur ke <strong>"Dibuka / Aktif"</strong> agar wali murid bisa mengecek tagihan di halaman depan.
-                                    Pilih <strong>"Ditutup"</strong> jika sedang ada maintenance atau tidak ingin menampilkan fitur ini.
+                                    Atur ke <strong>"Dibuka / Aktif"</strong> agar wali murid bisa mengecek tagihan di halaman
+                                    depan.
+                                    Pilih <strong>"Ditutup"</strong> jika sedang ada maintenance atau tidak ingin menampilkan
+                                    fitur ini.
                                 </span>
                             <?php endif; ?>
                         </label>
@@ -123,15 +125,18 @@ $contents = $portal->getAllContent();
                             <div class="flex items-center mt-2">
                                 <label class="relative inline-flex items-center cursor-pointer">
                                     <input type="hidden" name="content[<?= $key ?>]" value="0"> <!-- Fallback for unchecked -->
-                                    <input type="checkbox" name="content[<?= $key ?>]" value="1" class="sr-only peer" <?= $data['content_value'] == '1' ? 'checked' : '' ?>>
-                                    <div class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-green-600"></div>
+                                    <input type="checkbox" name="content[<?= $key ?>]" value="1" class="sr-only peer"
+                                        <?= $data['content_value'] == '1' ? 'checked' : '' ?>>
+                                    <div
+                                        class="w-14 h-7 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-green-600">
+                                    </div>
                                     <span class="ml-3 text-sm font-medium text-gray-900 status-text">
                                         <?= $data['content_value'] == '1' ? 'Layanan AKTIF' : 'Layanan NON-AKTIF' ?>
                                     </span>
                                 </label>
                             </div>
                             <script>
-                                document.querySelector('input[name="content[<?= $key ?>]"]').addEventListener('change', function() {
+                                document.querySelector('input[name="content[<?= $key ?>]"]').addEventListener('change', function () {
                                     this.parentElement.querySelector('.status-text').textContent = this.checked ? 'Layanan AKTIF' : 'Layanan NON-AKTIF';
                                 });
                             </script>
@@ -139,7 +144,8 @@ $contents = $portal->getAllContent();
                         <?php elseif ($data['input_type'] === 'select'): ?>
                             <select name="content[<?= $key ?>]" class="w-full px-4 py-3 border border-gray-300 rounded-lg">
                                 <option value="<?= htmlspecialchars($data['content_value']) ?>">
-                                    <?= htmlspecialchars($data['content_value']) ?></option>
+                                    <?= htmlspecialchars($data['content_value']) ?>
+                                </option>
                             </select>
 
                         <?php else: ?>

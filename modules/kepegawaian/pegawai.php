@@ -441,7 +441,7 @@ try {
             </button>
         </div>
 
-        <form method="POST" enctype="multipart/form-data" id="">
+        <form method="POST" enctype="multipart/form-data" id="formPegawai">
             <input type="hidden" name="action" id="formAction" value="create">
             <input type="hidden" name="id" id="pegawaiId" value="">
 
